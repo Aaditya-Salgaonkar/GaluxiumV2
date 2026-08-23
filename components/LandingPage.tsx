@@ -291,13 +291,13 @@ interface SeedFundCriteria {
 
   // Judges Data
   const judges = [
-    {
-      name: "Simran Arora",
-      role: "Senior Product Manager",
-      org: "Google (Gemini Enterprise)",
-      expertise: "Enterprise AI & Scaled LLM Deployments",
-      badge: "Google"
-    },
+    // {
+    //   name: "Simran Arora",
+    //   role: "Senior Product Manager",
+    //   org: "Google (Gemini Enterprise)",
+    //   expertise: "Enterprise AI & Scaled LLM Deployments",
+    //   badge: "Google"
+    // },
     {
       name: "Sai Rakshit",
       role: "Staff Software Engineer",

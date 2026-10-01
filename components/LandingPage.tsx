@@ -1,39 +1,30 @@
 "use client";
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
-  Calendar,
   Globe,
   DollarSign,
   Users,
   ArrowRight,
   CheckCircle2,
   Award,
-  Terminal,
   Server,
-  Code,
   Shield,
   Zap,
   Layers,
   Cpu,
-  Database,
   ExternalLink,
   ChevronDown,
   Sparkles,
   Check,
   Clock,
-  Briefcase,
   Sliders,
   TrendingUp,
-  Flame,
-  FileText,
   Video,
-  Lock,
-  Search,
-  MessageSquare,
   AlertCircle,
-  HelpCircle
+  HelpCircle,
+  Trophy
 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -53,7 +44,32 @@ export default function LandingPage() {
 
   // FAQ Accordion State
   const [openFaq, setOpenFaq] = useState<number | null>(0);
-
+const stats = [
+  {
+    icon: Trophy,
+    title: "$14,644 Total Value",
+    subtitle: "Enterprise Infra & Grants",
+    desc: "Pre-procured credit pools, cloud compute reserves, and DevSwarm Pro licenses."
+  },
+  {
+    icon: Globe,
+    title: "100% Unrestricted",
+    subtitle: "All Occupations & Ages",
+    desc: "Engineers, founders, and students globally. No legacy restrictions."
+  },
+  {
+    icon: Users,
+    title: "865+ Verified Builders",
+    subtitle: "Active Community",
+    desc: "Form squads, pair program, and synchronize via Galuxium Discord hubs."
+  },
+  {
+    icon: Zap,
+    title: "Enterprise Stack",
+    subtitle: "Production API Pipelines",
+    desc: "Direct access to Adaption Labs, Backboard.io compute, and vector RAG hosting."
+  }
+];
   // Live Countdown State (Target: Oct 31, 2026 17:00:00 GMT+5:30)
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -339,7 +355,21 @@ interface SeedFundCriteria {
       org: "Compunnel Inc.",
       expertise: "Cloud Architecture & Modernization",
       badge: "Compunnel"
-    }
+    },
+    {
+    name: "Jiaqi Zhu",
+    role: "Software Engineer",
+    org: "AI Workflows & Distributed Systems",
+    badge: "Software Engineer",
+    expertise: "Distributed Systems, AI Agent Workflows & Synthetic Data"
+  },
+  {
+    name: "Ravi Shanker Thadishetti",
+    role: "Senior Software Engineer",
+    org: "PayPal",
+    badge: "Paypal",
+    expertise: "FinTech Infrastructure, High-Throughput Systems & APIs"
+  }
   ];
 
   // FAQ Data
@@ -414,7 +444,7 @@ interface SeedFundCriteria {
               <a href="#overview" className="px-3.5 py-1.5 rounded-full hover:text-slate-900 hover:bg-slate-100/70 transition-all">Overview</a>
               <a href="#architecture" className="px-3.5 py-1.5 rounded-full hover:text-slate-900 hover:bg-slate-100/70 transition-all">Architecture</a>
               <a href="#requirements" className="px-3.5 py-1.5 rounded-full hover:text-slate-900 hover:bg-slate-100/70 transition-all">Requirements</a>
-              <a href="#prizes" className="px-3.5 py-1.5 rounded-full hover:text-slate-900 hover:bg-slate-100/70 transition-all">Prizes & Fund</a>
+              <a href="#prizes" className="px-3.5 py-1.5 rounded-full hover:text-slate-900 hover:bg-slate-100/70 transition-all">Prizes</a>
               <a href="#judging" className="px-3.5 py-1.5 rounded-full hover:text-slate-900 hover:bg-slate-100/70 transition-all">Criteria</a>
               <a href="#judges" className="px-3.5 py-1.5 rounded-full hover:text-slate-900 hover:bg-slate-100/70 transition-all">Judges</a>
               <Link href="/rules" className="px-3.5 py-1.5 rounded-full text-slate-900 font-semibold hover:bg-slate-100/70 transition-all flex items-center gap-1">
@@ -426,7 +456,7 @@ interface SeedFundCriteria {
           <div className="flex items-center gap-3">
             <div className="hidden sm:flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/60 text-emerald-700 text-xs font-semibold">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              411 Builders Active
+              865+ Builders Active
             </div>
             
             <a 
@@ -453,7 +483,7 @@ interface SeedFundCriteria {
             </span>
             <span className="text-slate-300">|</span>
             <span className="text-xs font-semibold text-slate-900 flex items-center gap-1">
-              $2,600 Cash & Grants
+              $14,644 T & C
             </span>
           </div>
 
@@ -521,46 +551,26 @@ interface SeedFundCriteria {
         </div>
 
         {/* Global Key Metrics Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mt-12 max-w-6xl mx-auto">
-          {[
-            {
-              icon: DollarSign,
-              title: "$2,600 Total Value",
-              subtitle: "Cash & Dev Grants",
-              desc: "Tiered cash grants and Backboard.io enterprise inference pipelines."
-            },
-            {
-              icon: Globe,
-              title: "100% Unrestricted",
-              subtitle: "All Occupations & Ages",
-              desc: "Engineers, founders, and students globally. No legacy restrictions."
-            },
-            {
-              icon: Users,
-              title: "411 Verified Builders",
-              subtitle: "Active Community",
-              desc: "Form squads, pair program, and synchronize via Discord hubs."
-            },
-            {
-              icon: Award,
-              title: "$1,000 Seed Pool",
-              subtitle: "Executive Incubation",
-              desc: "Exclusive board-approved fund for commercially ready platforms."
-            }
-          ].map((item, idx) => (
-            <div 
-              key={idx}
-              className="p-6 rounded-3xl bg-white/60 backdrop-blur-xl border border-slate-200/70 shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:border-slate-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all group"
-            >
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mt-12 max-w-6xl mx-auto">
+      {stats.map((item, idx) => {
+        const IconComponent = item.icon;
+        return (
+          <div 
+            key={idx}
+            className="p-6 rounded-3xl bg-white/60 backdrop-blur-xl border border-slate-200/70 shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:border-slate-300 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all group flex flex-col justify-between"
+          >
+            <div>
               <div className="w-10 h-10 rounded-2xl bg-slate-100 flex items-center justify-center text-slate-900 mb-4 group-hover:bg-slate-900 group-hover:text-white transition-all">
-                <item.icon size={20} />
+                <IconComponent size={20} />
               </div>
-              <div className="text-lg font-bold text-slate-900">{item.title}</div>
+              <div className="text-lg font-bold text-slate-900 tracking-tight">{item.title}</div>
               <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">{item.subtitle}</div>
               <div className="text-xs text-slate-500 leading-relaxed">{item.desc}</div>
             </div>
-          ))}
-        </div>
+          </div>
+        );
+      })}
+    </div>
       </section>
 
       {/* Interactive Architecture of the Arena */}
@@ -755,168 +765,165 @@ interface SeedFundCriteria {
 
       {/* Prize Matrix & Galuxium Executive Seed Fund */}
       <section id="prizes" className="py-24 px-6 max-w-7xl mx-auto relative z-10">
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-xs font-mono font-medium text-slate-700 uppercase tracking-wider mb-4">
-            <Award size={14} /> Capital Allocation
-          </div>
-          <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
-            $2,600 in Prizes & Grants
-          </h2>
-          <p className="text-slate-600 text-lg">
-            Direct developer credit deployment, venture capital propagation, and official distinction credentials.
-          </p>
+      {/* Header & Total Banner */}
+      <div className="max-w-3xl mx-auto text-center mb-16">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-xs font-mono font-medium text-slate-700 uppercase tracking-wider mb-4">
+          <Trophy size={14} /> Prize Allocation
         </div>
+        <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
+          $14,644 Total Prize Pool
+        </h2>
+        <p className="text-slate-600 text-lg">
+          Pre-procured enterprise credit pools, cloud compute reserves, and commercial software licenses underwritten directly by Galuxium and Ecosystem Partners.
+        </p>
+      </div>
 
-        {/* Three Tier Cards */}
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
-          {/* 1st Place */}
-          <div className="relative p-8 rounded-3xl bg-white border-2 border-slate-900 shadow-xl shadow-slate-900/5 flex flex-col justify-between">
-            <div className="absolute -top-3.5 left-8 px-3.5 py-0.5 rounded-full bg-slate-900 text-white text-[10px] font-mono uppercase tracking-widest font-bold">
-              Flagship Honor
-            </div>
-            <div>
-              <div className="text-xs font-mono font-bold text-slate-400 uppercase tracking-widest mb-1 mt-2">1st Place</div>
-              <h3 className="text-2xl font-black text-slate-900 tracking-tight mb-2">The Nexus Sovereign</h3>
-              <div className="text-4xl font-black text-slate-900 tracking-tight font-mono mb-6">
-                $1,000 <span className="text-xs font-sans text-slate-500 font-semibold">in Credits</span>
-              </div>
-              <p className="text-xs text-slate-600 leading-relaxed mb-6">
-                Awarded to the cohort demonstrating absolute technical mastery, pristine architectural scalability, and market-ready fiscal loops.
-              </p>
-              
-              <div className="space-y-3 pt-6 border-t border-slate-100 text-xs text-slate-600">
-                <div className="flex items-start gap-2.5">
-                  <CheckCircle2 size={16} className="text-slate-900 flex-shrink-0 mt-0.5" />
-                  <span>$1,000 in Backboard.io enterprise credits provisioned directly.</span>
-                </div>
-                <div className="flex items-start gap-2.5">
-                  <CheckCircle2 size={16} className="text-slate-900 flex-shrink-0 mt-0.5" />
-                  <span>Full API inference, persistent vector RAG, & R-CLI harness access.</span>
-                </div>
-                <div className="flex items-start gap-2.5">
-                  <CheckCircle2 size={16} className="text-slate-900 flex-shrink-0 mt-0.5" />
-                  <span>Global network broadcast to Tier-1 VC nodes & angel networks.</span>
-                </div>
-                <div className="flex items-start gap-2.5">
-                  <CheckCircle2 size={16} className="text-slate-900 flex-shrink-0 mt-0.5" />
-                  <span>Executive Certificate of Technical Distinction.</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-8 pt-4 border-t border-slate-100 text-[10px] font-mono text-slate-400">
-              *Requires verified Backboard Starter node ($5/mo) for ledger synchronization.
-            </div>
+      {/* Prize Cards Grid */}
+      <div className="grid lg:grid-cols-3 gap-8 mb-12">
+        
+        {/* 1st Place */}
+        <div className="relative p-8 rounded-3xl bg-white border-2 border-slate-900 shadow-xl shadow-slate-900/5 flex flex-col justify-between">
+          <div className="absolute -top-3.5 left-8 px-3.5 py-0.5 rounded-full bg-slate-900 text-white text-[10px] font-mono uppercase tracking-widest font-bold">
+            Flagship Institutional Honor
           </div>
-
-          {/* 2nd Place */}
-          <div className="p-8 rounded-3xl bg-white border border-slate-200/80 shadow-[0_8px_30px_rgba(0,0,0,0.03)] flex flex-col justify-between">
-            <div>
-              <div className="text-xs font-mono font-bold text-slate-400 uppercase tracking-widest mb-1">2nd Place</div>
-              <h3 className="text-2xl font-black text-slate-900 tracking-tight mb-2">Architectural Vanguard</h3>
-              <div className="text-4xl font-black text-slate-900 tracking-tight font-mono mb-6">
-                $500 <span className="text-xs font-sans text-slate-500 font-semibold">in Credits</span>
-              </div>
-              <p className="text-xs text-slate-600 leading-relaxed mb-6">
-                Engineered for robust performance, multi-model IDE paradigms, and hyper-complex computation problem solving.
-              </p>
-              
-              <div className="space-y-3 pt-6 border-t border-slate-100 text-xs text-slate-600">
-                <div className="flex items-start gap-2.5">
-                  <CheckCircle2 size={16} className="text-slate-900 flex-shrink-0 mt-0.5" />
-                  <span>$500 in Backboard.io developer portal credits.</span>
-                </div>
-                <div className="flex items-start gap-2.5">
-                  <CheckCircle2 size={16} className="text-slate-900 flex-shrink-0 mt-0.5" />
-                  <span>Vector inference pipelines & Hellonash.ai stack access.</span>
-                </div>
-                <div className="flex items-start gap-2.5">
-                  <CheckCircle2 size={16} className="text-slate-900 flex-shrink-0 mt-0.5" />
-                  <span>Galuxium enterprise partner talent profiling.</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-8 pt-4 border-t border-slate-100 text-[10px] font-mono text-slate-400">
-              *Requires active Backboard node verification.
-            </div>
-          </div>
-
-          {/* 3rd Place */}
-          <div className="p-8 rounded-3xl bg-white border border-slate-200/80 shadow-[0_8px_30px_rgba(0,0,0,0.03)] flex flex-col justify-between">
-            <div>
-              <div className="text-xs font-mono font-bold text-slate-400 uppercase tracking-widest mb-1">3rd Place</div>
-              <h3 className="text-2xl font-black text-slate-900 tracking-tight mb-2">High Tier Market Catalyst</h3>
-              <div className="text-4xl font-black text-slate-900 tracking-tight font-mono mb-6">
-                $100 <span className="text-xs font-sans text-slate-500 font-semibold">in Credits</span>
-              </div>
-              <p className="text-xs text-slate-600 leading-relaxed mb-6">
-                Awarded to the team executing a frictionless user onboarding loop backed by automated development arrays.
-              </p>
-              
-              <div className="space-y-3 pt-6 border-t border-slate-100 text-xs text-slate-600">
-                <div className="flex items-start gap-2.5">
-                  <CheckCircle2 size={16} className="text-slate-900 flex-shrink-0 mt-0.5" />
-                  <span>$100 in Backboard.io developer credits.</span>
-                </div>
-                <div className="flex items-start gap-2.5">
-                  <CheckCircle2 size={16} className="text-slate-900 flex-shrink-0 mt-0.5" />
-                  <span>Official Certificate of Distinction.</span>
-                </div>
-                <div className="flex items-start gap-2.5">
-                  <CheckCircle2 size={16} className="text-slate-900 flex-shrink-0 mt-0.5" />
-                  <span>Devpost verified achievement badge synchronization.</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-8 pt-4 border-t border-slate-100 text-[10px] font-mono text-slate-400">
-              *Requires active Backboard node verification.
-            </div>
-          </div>
-        </div>
-
-        {/* The Galuxium Executive Seed Fund Banner */}
-        <div className="p-8 md:p-12 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 text-white shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
           
-          <div className="relative z-10 grid lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-8 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-mono font-semibold uppercase tracking-wider">
-                <Sparkles size={14} /> Exclusive Innovation Pool
-              </div>
-              <h3 className="text-3xl md:text-4xl font-extrabold tracking-tight">
-                The Galuxium Executive Seed Fund
-              </h3>
-              <p className="text-slate-300 text-sm md:text-base leading-relaxed">
-                In addition to the ecosystem tiers, Galuxium has reserved an exclusive grant of <strong>up to $1,000 direct launch capital</strong>. Deployed at the absolute discretion of the Galuxium Board for the submission that unanimously satisfies all enterprise compliance benchmarks.
-              </p>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 text-xs text-slate-300 font-mono">
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 size={14} className="text-blue-400" />
-                  <span>Zero-Trust Security</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 size={14} className="text-blue-400" />
-                  <span>Live Payment Webhooks</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CheckCircle2 size={14} className="text-blue-400" />
-                  <span>Sub-Second Latency</span>
-                </div>
-              </div>
+          <div>
+            <div className="text-xs font-mono font-bold text-slate-400 uppercase tracking-widest mb-1 mt-2">1st Place • 1 Winner</div>
+            <h3 className="text-2xl font-black text-slate-900 tracking-tight mb-1">The Nexus Sovereign Grand Champion</h3>
+            
+            <div className="text-4xl font-black text-slate-900 tracking-tight font-mono mb-4">
+              $6,768 <span className="text-xs font-sans text-slate-500 font-semibold">in value</span>
             </div>
-
-            <div className="lg:col-span-4 flex flex-col items-center lg:items-end justify-center">
-              <div className="p-6 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-center w-full max-w-xs">
-                <div className="text-xs font-mono uppercase text-slate-300 tracking-wider mb-1">Direct Capital Allocation</div>
-                <div className="text-4xl md:text-5xl font-black font-mono text-white mb-2">$1,000</div>
-                <div className="text-[11px] text-blue-200">Board Reviewed & Fast-Tracked</div>
+            
+            <p className="text-xs text-slate-600 leading-relaxed mb-6">
+              Awarded to the team demonstrating absolute technical mastery, pristine architectural scalability, and undisputed commercial viability.
+            </p>
+            
+            <div className="space-y-3 pt-6 border-t border-slate-100 text-xs text-slate-600">
+              <div className="flex items-start gap-2.5">
+                <CheckCircle2 size={16} className="text-slate-900 flex-shrink-0 mt-0.5" />
+                <span><strong>Adaption Labs AI Infrastructure (up to $5,000):</strong> $1,250 USD in platform credits per member (up to 4) for synthetic data & custom model deployment.</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <CheckCircle2 size={16} className="text-slate-900 flex-shrink-0 mt-0.5" />
+                <span><strong>Backboard.io Compute ($1,000 USD):</strong> Full ledger access to live API inference pipelines, cross-thread memory architectures, and production-tier vector RAG hosting.</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <CheckCircle2 size={16} className="text-slate-900 flex-shrink-0 mt-0.5" />
+                <span><strong>DevSwarm Pro ($768 Value):</strong> 2-year premium license per member (up to 4) parallel agent environment.</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <CheckCircle2 size={16} className="text-slate-900 flex-shrink-0 mt-0.5" />
+                <span><strong>Venture Network Broadcast:</strong> High-impact global media feature across the Galuxium enterprise network.</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <CheckCircle2 size={16} className="text-slate-900 flex-shrink-0 mt-0.5" />
+                <span><strong>Executive Credentials:</strong> Official Certificate of Technical Distinction bearing Galuxium&apos;s assets.</span>
               </div>
             </div>
           </div>
+
+          <div className="mt-8 pt-4 border-t border-slate-100 text-[10px] leading-tight font-mono text-slate-400">
+            *Allocated as live enterprise infrastructure keys, API credits, and active licenses.
+          </div>
         </div>
-      </section>
+
+        {/* 2nd Place */}
+        <div className="p-8 rounded-3xl bg-white border border-slate-200/80 shadow-[0_8px_30px_rgba(0,0,0,0.03)] flex flex-col justify-between">
+          <div>
+            <div className="text-xs font-mono font-bold text-slate-400 uppercase tracking-widest mb-1">2nd Place • 1 Winner</div>
+            <h3 className="text-2xl font-black text-slate-900 tracking-tight mb-1">The Architectural Vanguard Laureate</h3>
+            
+            <div className="text-4xl font-black text-slate-900 tracking-tight font-mono mb-4">
+              $4,884 <span className="text-xs font-sans text-slate-500 font-semibold">in value</span>
+            </div>
+            
+            <p className="text-xs text-slate-600 leading-relaxed mb-6">
+              Awarded to the team that engineers a remarkably robust, highly performant technical foundation, successfully leveraging bleeding-edge multi-model IDE paradigms.
+            </p>
+            
+            <div className="space-y-3 pt-6 border-t border-slate-100 text-xs text-slate-600">
+              <div className="flex items-start gap-2.5">
+                <CheckCircle2 size={16} className="text-slate-900 flex-shrink-0 mt-0.5" />
+                <span><strong>Adaption Labs AI Infrastructure (up to $4,000):</strong> $1,000 USD in platform credits per member for synthetic data & model deployment.</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <CheckCircle2 size={16} className="text-slate-900 flex-shrink-0 mt-0.5" />
+                <span><strong>Backboard.io Compute ($500 USD):</strong> Access to live API inference pipelines, cross-thread memory, & vector RAG hosting.</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <CheckCircle2 size={16} className="text-slate-900 flex-shrink-0 mt-0.5" />
+                <span><strong>DevSwarm Pro ($384 Value):</strong> 1-year premium license per member (up to 4) parallel agent environment.</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <CheckCircle2 size={16} className="text-slate-900 flex-shrink-0 mt-0.5" />
+                <span><strong>Venture Network Broadcast:</strong> High-impact global media feature across the Galuxium network.</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <CheckCircle2 size={16} className="text-slate-900 flex-shrink-0 mt-0.5" />
+                <span><strong>Executive Credentials:</strong> Certificate of Technical Distinction.</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-8 pt-4 border-t border-slate-100 text-[10px] leading-tight font-mono text-slate-400">
+            *Allocated as live enterprise infrastructure keys, API credits, and active licenses.
+          </div>
+        </div>
+
+        {/* 3rd Place */}
+        <div className="p-8 rounded-3xl bg-white border border-slate-200/80 shadow-[0_8px_30px_rgba(0,0,0,0.03)] flex flex-col justify-between">
+          <div>
+            <div className="text-xs font-mono font-bold text-slate-400 uppercase tracking-widest mb-1">3rd Place • 1 Winner</div>
+            <h3 className="text-2xl font-black text-slate-900 tracking-tight mb-1">The High Tier Market Catalyst</h3>
+            
+            <div className="text-4xl font-black text-slate-900 tracking-tight font-mono mb-4">
+              $2,992 <span className="text-xs font-sans text-slate-500 font-semibold">in value</span>
+            </div>
+            
+            <p className="text-xs text-slate-600 leading-relaxed mb-6">
+              The High-Impact Engineering Honor awarded to the team demonstrating outstanding technical execution, creative system architecture, and high practical utility.
+            </p>
+            
+            <div className="space-y-3 pt-6 border-t border-slate-100 text-xs text-slate-600">
+              <div className="flex items-start gap-2.5">
+                <CheckCircle2 size={16} className="text-slate-900 flex-shrink-0 mt-0.5" />
+                <span><strong>Adaption Labs AI Infrastructure ($2,500 Total):</strong> $625 USD in platform credits per member (up to 4).</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <CheckCircle2 size={16} className="text-slate-900 flex-shrink-0 mt-0.5" />
+                <span><strong>Backboard.io Compute ($300 USD):</strong> Live API inference pipelines & production vector RAG hosting.</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <CheckCircle2 size={16} className="text-slate-900 flex-shrink-0 mt-0.5" />
+                <span><strong>DevSwarm Pro ($192 Value):</strong> 6-month premium parallel agent environment license per member.</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <CheckCircle2 size={16} className="text-slate-900 flex-shrink-0 mt-0.5" />
+                <span><strong>Venture Network Broadcast:</strong> High-impact media feature across Galuxium network.</span>
+              </div>
+              <div className="flex items-start gap-2.5">
+                <CheckCircle2 size={16} className="text-slate-900 flex-shrink-0 mt-0.5" />
+                <span><strong>Executive Credentials:</strong> Certificate of Technical Distinction.</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-8 pt-4 border-t border-slate-100 text-[10px] leading-tight font-mono text-slate-400">
+            *Allocated as live enterprise infrastructure keys, API credits, and active licenses.
+          </div>
+        </div>
+
+      </div>
+
+      {/* Procurement & Asset Allocation Mandate Notice */}
+      <div className="p-6 rounded-2xl bg-slate-50 border border-slate-200 text-xs text-slate-600 leading-relaxed">
+        <strong className="text-slate-900 font-mono uppercase tracking-wider block mb-1">
+          Procurement & Asset Allocation Mandate:
+        </strong>
+        The stated monetary valuation represents pre-procured enterprise credit pools, cloud compute reserves, and commercial software licenses directly underwritten and capital-funded by Galuxium and our Ecosystem Partners. All awarded allocations are disbursed as live enterprise infrastructure keys, production API credits, and active licenses equal to the published monetary value.
+      </div>
+    </section>
 
       {/* Judging Criteria Matrix */}
       <section id="judging" className="py-24 px-6 max-w-7xl mx-auto relative z-10 bg-slate-50/50 rounded-3xl border border-slate-200/50">
@@ -1133,7 +1140,7 @@ interface SeedFundCriteria {
               <li><a href="#overview" className="hover:text-slate-900 transition-colors">Overview</a></li>
               <li><a href="#architecture" className="hover:text-slate-900 transition-colors">Architecture Standard</a></li>
               <li><a href="#requirements" className="hover:text-slate-900 transition-colors">Submission Benchmarks</a></li>
-              <li><a href="#prizes" className="hover:text-slate-900 transition-colors">Prizes & Grants</a></li>
+              <li><a href="#prizes" className="hover:text-slate-900 transition-colors">Prizes</a></li>
             </ul>
           </div>
 

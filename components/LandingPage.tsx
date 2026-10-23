@@ -1173,7 +1173,7 @@ interface SeedFundCriteria {
             <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100 text-xs text-slate-600 space-y-2">
               <div className="flex items-center gap-2 text-slate-900 font-semibold">
                 <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                Arena Sync Active
+                Sync Active
               </div>
               <p className="text-[11px] text-slate-400">Official coding partner: Backboard.io enterprise stack.</p>
             </div>

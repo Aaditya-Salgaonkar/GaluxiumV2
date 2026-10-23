@@ -24,14 +24,16 @@ import {
   Video,
   AlertCircle,
   HelpCircle,
-  Trophy
+  Trophy,
+  Lock,
+  GitBranch,
+  FileCheck2
 } from 'lucide-react';
 import Image from 'next/image';
 
 export default function LandingPage() {
   // Navigation & Scroll State
   const [scrolled, setScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState('overview');
 
   // Interactive Architecture Tab State
   const [selectedArchTab, setSelectedArchTab] = useState(0);
@@ -44,6 +46,8 @@ export default function LandingPage() {
 
   // FAQ Accordion State
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+
+  const submissionPortalUrl = "https://tally.so/r/OQDgQA";
 
   const stats = [
     {
@@ -60,7 +64,7 @@ export default function LandingPage() {
     },
     {
       icon: Users,
-      title: "865+ Verified Builders",
+      title: "1,065+ Verified Builders",
       subtitle: "Active Community",
       desc: "Form squads, pair program, and synchronize via Galuxium Discord hubs."
     },
@@ -68,7 +72,40 @@ export default function LandingPage() {
       icon: Zap,
       title: "Enterprise Stack",
       subtitle: "Production API Pipelines",
-      desc: "Direct access to Adaption Labs, Backboard.io compute, and vector RAG hosting."
+      desc: "Direct access to Adaption Labs, Backboard.io, DevSwarm, and YouCam API."
+    }
+  ];
+
+  // Ecosystem Partners Data (Flagship: Adaption Labs)
+  const flagshipPartner = {
+    name: "Adaption Labs",
+    role: "Flagship Title & AI Infrastructure Partner",
+    logo: "/adaption.png",
+    allocation: "$11,500+ Infrastructure Pool",
+    desc: "Powering the next generation of adaptive AI systems, synthetic data pipelines, and custom enterprise model deployments for Nexus V2 builders."
+  };
+
+  const ecosystemPartners = [
+    {
+      name: "Backboard.io",
+      role: "Official Compute & RAG Partner",
+      logo: "/backboard.png",
+      badge: "Compute & Memory",
+      desc: "Unified LLM routing, persistent cross-thread memory architectures, and production vector RAG hosting."
+    },
+    {
+      name: "DevSwarm",
+      role: "Autonomous IDE Partner",
+      logo: "/dev.png",
+      badge: "Agentic Coding",
+      desc: "Parallel multi-agent development environments accelerating full-stack SaaS execution."
+    },
+    {
+      name: "YouCam API",
+      role: "Visual AI & AR Pipeline Partner",
+      logo: "/youcam.jpg",
+      badge: "Vision & Gen AI",
+      desc: "Enterprise-grade AI camera, virtual try-on, and real-time generative visual processing APIs."
     }
   ];
 
@@ -113,8 +150,6 @@ export default function LandingPage() {
       prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
     );
   };
-
-  const arenaUrl = "#register";
 
   // Architecture Tabs Data
   const architectureTabs = [
@@ -180,7 +215,7 @@ export async function handleStripeWebhook(event: StripeEvent) {
       headline: "Deep Agentic Workflows Beyond Generic API Wrappers",
       description: "Generic wrappers are strictly filtered out. Implement persistent multi-thread memory, advanced vector indexing, sub-second latency controls, and robust self-correcting agent chains.",
       specs: [
-        { label: "Inference Stack", value: "Backboard.io, Gemini 1.5 Pro, Claude 3.5, OpenAI" },
+        { label: "Inference Stack", value: "Adaption Labs, Backboard.io, YouCam API" },
         { label: "RAG Pipeline", value: "Contextual reranking & hybrid dense-sparse vector search" },
         { label: "Latency Benchmark", value: "Sub-500ms first token streaming response" },
         { label: "Memory Layer", value: "Cross-thread persistent semantic state" }
@@ -208,7 +243,7 @@ const solution = await ragOrchestrator.synthesize(userQuery);`
         { label: "Fund Size", value: "Up to $1,000 Direct Enterprise Incubation" },
         { label: "Review Board", value: "Galuxium Board of Senior Technical Architects" },
         { label: "Advisory Network", value: "Direct pipeline to tier-one angel & VC syndicates" },
-        { label: "Infrastructure", value: "Provisioned developer nodes & Backboard credits" }
+        { label: "Infrastructure", value: "Provisioned developer nodes & partner credits" }
       ],
       codeSnippet: `// Galuxium Board Compliance Evaluation
 interface SeedFundCriteria {
@@ -307,91 +342,103 @@ interface SeedFundCriteria {
     }
   ];
 
-  // Judges Data
+  // Judges Data (with dedicated headshot paths)
   const judges = [
     {
       name: "Sai Rakshit",
       role: "Staff Software Engineer",
       org: "Visa",
       expertise: "High-Throughput Financial Systems",
-      badge: "Visa"
+      badge: "Visa",
+      image: "/judges/sai-rakshit.png"
     },
     {
       name: "Akshar Yadav",
       role: "Application Programmer V",
       org: "Bank of America",
       expertise: "Distributed Systems & Institutional Sec",
-      badge: "BofA"
+      badge: "BofA",
+      image: "/judges/akshar-yadav.png"
     },
     {
       name: "Kumar Abhinav",
       role: "Software Dev Engineer II",
       org: "AiDash",
       expertise: "Applied AI & Geospatial Analytics",
-      badge: "AiDash"
+      badge: "AiDash",
+      image: "/judges/kumar-abhinav.png"
     },
     {
       name: "Puneet Bajaj",
       role: "Founding AI Engineer",
       org: "Autonomous Systems",
       expertise: "Agentic Swarms & Contextual RAG",
-      badge: "Founder"
+      badge: "Founder",
+      image: "/judges/puneet-bajaj.png"
     },
     {
       name: "Kyrylo Sotnykov",
       role: "Senior Software Engineer",
       org: "ScreenMeet",
       expertise: "Real-time Edge Communications",
-      badge: "ScreenMeet"
+      badge: "ScreenMeet",
+      image: "/judges/kyrylo-sotnykov.jpg"
     },
     {
       name: "Subhasis Kundu",
       role: "Senior Principal Solution Architect",
       org: "Compunnel Inc.",
       expertise: "Cloud Architecture & Modernization",
-      badge: "Compunnel"
+      badge: "Compunnel",
+      image: "/judges/subhasis-kundu.jpg"
     },
     {
       name: "Jiaqi Zhu",
       role: "Software Engineer",
       org: "AI Workflows & Distributed Systems",
       badge: "Software Engineer",
-      expertise: "Distributed Systems, AI Agent Workflows & Synthetic Data"
+      expertise: "Distributed Systems, AI Agent Workflows & Synthetic Data",
+      image: "/judges/jiaqi-zhu.png"
     },
     {
       name: "Ravi Shanker Thadishetti",
       role: "Senior Software Engineer",
       org: "PayPal",
       badge: "PayPal",
-      expertise: "FinTech Infrastructure, High-Throughput Systems & APIs"
+      expertise: "FinTech Infrastructure, High-Throughput Systems & APIs",
+      image: "/judges/ravi-shanker.jpeg"
     },
     {
       name: "Shayan Saif",
       role: "Founder & CEO",
       org: "Move Growth Agency",
       badge: "Founder",
-      expertise: "Business Growth & AI-Driven Customer Acquisition"
+      expertise: "Business Growth & AI-Driven Customer Acquisition",
+      image: "/judges/shayan-saif.png"
     },
     {
       name: "Bhagat Siddi",
       role: "Engineering Leader",
       org: "Enterprise Engineering",
       badge: "Leader",
-      expertise: "Scalable Architecture & Engineering Leadership"
+      expertise: "Scalable Architecture & Engineering Leadership",
+      image: "/judges/bhagat-siddi.jpg"
     },
     {
       name: "Catherine Ganduri",
       role: "Systems Analyst",
       org: "Texas Commission on Environmental Quality",
       badge: "TCEQ",
-      expertise: "Enterprise Systems Analysis & Public Infrastructure"
+      expertise: "Enterprise Systems Analysis & Public Infrastructure",
+      image: "/judges/catherine-ganduri.png"
     },
     {
       name: "Ramesh Venkatachalapathy",
       role: "Principal Engineer",
       org: "AT&T | IEEE Senior Member",
       badge: "AT&T",
-      expertise: "Telecom Infrastructure & Distributed Systems"
+      expertise: "Telecom Infrastructure & Distributed Systems",
+      image: "/judges/ramesh-venkatachalapathy.png"
     }
   ];
 
@@ -399,23 +446,23 @@ interface SeedFundCriteria {
   const faqs = [
     {
       q: "Who is eligible to participate in Galuxium Nexus V2?",
-      a: "Galuxium Nexus V2 is fully open to professional software engineers, technical founders, architects, and builders of all ages and backgrounds worldwide. Any static platform tags mentioning student-only restrictions are legacy platform artifacts and are officially overridden by our operational mandate."
+      a: "Galuxium Nexus V2 is fully open to professional software engineers, technical founders, architects, and builders of all ages and backgrounds worldwide. Any static platform tags mentioning student-only restrictions are legacy artifacts and are officially overridden by our operational mandate."
     },
     {
-      q: "How are the Backboard.io developer credits awarded?",
-      a: "Winning teams receive credit keys provisioned directly to their Backboard.io developer node. To clear ledger authentication, winning accounts maintain an active Backboard starter tier ($5/mo), enabling full access to live inference pipelines, vector hosting, and the R-CLI coding harness."
+      q: "Where and how do we submit our final project?",
+      a: "All final submissions must be logged through our proprietary Galuxium Submission Portal (https://tally.so/r/OQDgQA) before October 31, 2026 at 5:00 PM IST. Every entry undergoes automated commit history verification, live cloud deployment checks, and repository uniqueness validation."
+    },
+    {
+      q: "How are the partner developer credits awarded?",
+      a: "Winning teams receive infrastructure keys provisioned directly to their developer nodes across Adaption Labs, Backboard.io, DevSwarm, and YouCam API. For Backboard.io ledger authentication, winning accounts maintain an active starter tier ($5/mo), enabling full access to live inference pipelines and vector RAG hosting."
     },
     {
       q: "What unlocks the $1,000 Galuxium Executive Seed Fund?",
       a: "The $1,000 Seed Fund is an enterprise incubation grant awarded at the board's discretion. Submissions must transcend prototype status by featuring live payment infrastructure, resilient edge deployment, zero-trust security, and demonstrable commercial viability."
     },
     {
-      q: "What is the team size limit?",
-      a: "Builders may compete as solo founders or in collaborative teams of up to 4 members. All team members must be registered on the official arena roster prior to project submission."
-    },
-    {
-      q: "Who owns the Intellectual Property created during the hackathon?",
-      a: "Participants retain 100% intellectual property ownership of all code, designs, and business models architected during the event. Galuxium receives only a non-exclusive license to showcase winning platforms across media channels."
+      q: "What is the team size limit and IP policy?",
+      a: "Builders may compete solo or in teams of up to 4 members. Participants retain 100% intellectual property ownership of all code, designs, and business models architected during the event."
     }
   ];
 
@@ -446,13 +493,13 @@ interface SeedFundCriteria {
       >
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           <div className="flex items-center gap-10">
-            <Link href="#" className="flex items-center gap-2.5 group">
+            <div className="flex items-center gap-2.5">
               <Image
-                  src="/brand/logo.png"
-                  alt="Galuxium Logo"
-                  width={50}
-                  height={50}
-                />
+                src="/brand/logo.png"
+                alt="Galuxium Logo"
+                width={50}
+                height={50}
+              />
               <div className="flex flex-col">
                 <span className="font-extrabold text-base tracking-tight text-slate-900 leading-none">
                   GALUXIUM
@@ -461,14 +508,15 @@ interface SeedFundCriteria {
                   Nexus V2
                 </span>
               </div>
-            </Link>
+            </div>
 
             <nav className="hidden lg:flex items-center gap-1 text-sm font-medium text-slate-600">
               <a href="#overview" className="px-3.5 py-1.5 rounded-full hover:text-slate-900 hover:bg-slate-100/70 transition-all">Overview</a>
+              <a href="#partners" className="px-3.5 py-1.5 rounded-full hover:text-slate-900 hover:bg-slate-100/70 transition-all">Partners</a>
+              <a href="#integrity-portal" className="px-3.5 py-1.5 rounded-full hover:text-slate-900 hover:bg-slate-100/70 transition-all">Portal</a>
               <a href="#architecture" className="px-3.5 py-1.5 rounded-full hover:text-slate-900 hover:bg-slate-100/70 transition-all">Architecture</a>
               <a href="#requirements" className="px-3.5 py-1.5 rounded-full hover:text-slate-900 hover:bg-slate-100/70 transition-all">Requirements</a>
               <a href="#prizes" className="px-3.5 py-1.5 rounded-full hover:text-slate-900 hover:bg-slate-100/70 transition-all">Prizes</a>
-              <a href="#judging" className="px-3.5 py-1.5 rounded-full hover:text-slate-900 hover:bg-slate-100/70 transition-all">Criteria</a>
               <a href="#judges" className="px-3.5 py-1.5 rounded-full hover:text-slate-900 hover:bg-slate-100/70 transition-all">Judges</a>
               <Link href="/rules" className="px-3.5 py-1.5 rounded-full text-slate-900 font-semibold hover:bg-slate-100/70 transition-all flex items-center gap-1">
                 Rules <span className="text-[10px] px-1.5 py-0.2 bg-slate-200/80 rounded-full font-mono">NEW</span>
@@ -477,24 +525,16 @@ interface SeedFundCriteria {
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="hidden sm:flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200/60 text-emerald-700 text-xs font-semibold">
+            <div className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/60 text-emerald-700 text-xs font-semibold">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              865+ Builders Active
+              1,065+ Builders Active
             </div>
-            
-            <a 
-              href={arenaUrl}
-              className="relative group overflow-hidden px-5 py-2 rounded-full bg-slate-900 text-white text-xs md:text-sm font-semibold tracking-wide hover:bg-slate-800 transition-all shadow-md shadow-slate-900/10 flex items-center gap-1.5"
-            >
-              <span>Join Arena</span>
-              <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
-            </a>
           </div>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section id="overview" className="relative z-10 pt-36 md:pt-44 pb-20 px-6 max-w-7xl mx-auto">
+      <section id="overview" className="relative z-10 pt-36 md:pt-44 pb-16 px-6 max-w-7xl mx-auto">
         <div className="text-center max-w-4xl mx-auto">
           {/* Badge */}
           <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/80 border border-slate-200/80 shadow-[0_2px_12px_rgba(0,0,0,0.03)] backdrop-blur-md mb-8">
@@ -525,10 +565,12 @@ interface SeedFundCriteria {
           {/* Actions */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
             <a 
-              href={arenaUrl}
+              href={submissionPortalUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="w-full sm:w-auto px-9 py-4 rounded-full bg-slate-900 hover:bg-black text-white text-base font-semibold tracking-tight transition-all shadow-xl shadow-slate-900/15 flex items-center justify-center gap-2.5 group"
             >
-              <span>Enter the Arena</span>
+              <span>Submit Project via Official Portal</span>
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </a>
 
@@ -589,6 +631,199 @@ interface SeedFundCriteria {
               </div>
             );
           })}
+        </div>
+      </section>
+
+      {/* Flagship & Ecosystem Partners Showcase */}
+      <section id="partners" className="py-16 px-6 max-w-7xl mx-auto relative z-10">
+        <div className="max-w-3xl mx-auto text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-xs font-mono font-medium text-slate-700 uppercase tracking-wider mb-3">
+            <Zap size={14} /> Official Infrastructure Ecosystem
+          </div>
+          <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+            Underwritten by Industry Leaders
+          </h2>
+        </div>
+
+        {/* Main Flagship Partner: Adaption Labs */}
+        <div className="mb-8 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800 text-white p-8 md:p-12 shadow-2xl border border-slate-800 relative overflow-hidden">
+          <div className="absolute -right-20 -top-20 w-80 h-80 bg-emerald-500/10 blur-[100px] rounded-full pointer-events-none" />
+          <div className="relative z-10 grid lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-5 flex flex-col items-start">
+              <span className="px-3 py-1 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-emerald-300 text-[10px] font-mono uppercase tracking-widest font-bold mb-5">
+                {flagshipPartner.role}
+              </span>
+              <div className="w-full max-w-[260px] h-24 rounded-2xl bg-white/95 p-4 flex items-center justify-center shadow-inner mb-4 relative">
+                <Image
+                  src={flagshipPartner.logo}
+                  alt={flagshipPartner.name}
+                  width={200}
+                  height={100}
+                  className="object-fit w-full"
+                />
+              </div>
+              <div className="text-xs font-mono text-slate-400 mt-1">
+                Primary Underwriter • <span className="text-white font-semibold">{flagshipPartner.allocation}</span>
+              </div>
+            </div>
+
+            <div className="lg:col-span-7 space-y-4">
+              <h3 className="text-2xl md:text-4xl font-black tracking-tight">
+                {flagshipPartner.name}
+              </h3>
+              <p className="text-slate-300 text-sm md:text-base leading-relaxed">
+                {flagshipPartner.desc}
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-3">
+                <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10">
+                  <div className="text-[10px] font-mono uppercase text-slate-400">1st Place Grant</div>
+                  <div className="text-sm font-bold text-white mt-0.5">$5,000 Credits</div>
+                </div>
+                <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10">
+                  <div className="text-[10px] font-mono uppercase text-slate-400">2nd Place Grant</div>
+                  <div className="text-sm font-bold text-white mt-0.5">$4,000 Credits</div>
+                </div>
+                <div className="p-3.5 rounded-2xl bg-white/5 border border-white/10">
+                  <div className="text-[10px] font-mono uppercase text-slate-400">3rd Place Grant</div>
+                  <div className="text-sm font-bold text-white mt-0.5">$2,500 Credits</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Co-Partners Grid: Backboard.io, DevSwarm, YouCam API */}
+        <div className="grid md:grid-cols-3 gap-6">
+          {ecosystemPartners.map((partner, idx) => (
+            <div
+              key={idx}
+              className="p-7 rounded-3xl bg-white border border-slate-200/80 shadow-[0_4px_24px_rgba(0,0,0,0.03)] hover:border-slate-400 transition-all flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center justify-between mb-5">
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-slate-100 text-slate-700">
+                    {partner.badge}
+                  </span>
+                  <span className="text-[11px] font-mono text-slate-400">{partner.role}</span>
+                </div>
+
+                <div className="w-full h-20 rounded-2xl bg-slate-50 border border-slate-100 p-4 flex items-center justify-center mb-5 relative">
+                  <Image
+                    src={partner.logo}
+                    alt={partner.name}
+                    width={160}
+                    height={50}
+                    className="object-fit w-full"
+                  />
+                </div>
+
+                <h4 className="text-xl font-bold text-slate-900 tracking-tight mb-2">
+                  {partner.name}
+                </h4>
+                <p className="text-xs text-slate-500 leading-relaxed">
+                  {partner.desc}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Prominent Official Submission Portal & Anti-Plagiarism Integrity Mandate */}
+      <section id="integrity-portal" className="py-16 px-6 max-w-7xl mx-auto relative z-10">
+        <div className="rounded-3xl bg-white border-2 border-slate-900 shadow-[0_25px_70px_-15px_rgba(15,23,42,0.12)] overflow-hidden">
+          {/* Top Alert Ribbon */}
+          <div className="bg-slate-900 text-white px-6 py-3.5 flex flex-wrap items-center justify-between gap-3">
+            <div className="flex items-center gap-2.5">
+              <span className="flex h-2.5 w-2.5 rounded-full bg-emerald-400 animate-ping" />
+              <span className="text-xs font-mono uppercase tracking-widest font-bold text-emerald-400">
+                Mandatory Protocol • Official Submission Portal & Event Integrity Policy
+              </span>
+            </div>
+            <span className="text-[11px] font-mono text-slate-300">
+              Evaluation Window: Nov 1 – Nov 9, 2026
+            </span>
+          </div>
+
+          <div className="p-8 md:p-12 grid lg:grid-cols-12 gap-10 items-center">
+            <div className="lg:col-span-7 space-y-5">
+              <h2 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight leading-tight">
+                Zero-Tolerance Plagiarism Enforcement & Proprietary Submission Hub
+              </h2>
+              <p className="text-slate-600 text-sm md:text-base leading-relaxed">
+                Our organizing committee and automated tracking scripts actively audit every entry for unvetted resubmissions and recycled codebases. Submitting identical or pre-existing projects built for past hackathons triggers immediate, irreversible disqualification.
+              </p>
+              <p className="text-slate-600 text-sm md:text-base leading-relaxed">
+                To safeguard genuine builders architecting original SaaS platforms, all project entries, repository audits, live deployment links, and fiscal briefings are centralized exclusively through our proprietary verification portal.
+              </p>
+
+              <div className="grid sm:grid-cols-3 gap-4 pt-2">
+                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/70">
+                  <GitBranch size={18} className="text-slate-900 mb-2" />
+                  <div className="text-xs font-bold text-slate-900">Commit Authentication</div>
+                  <div className="text-[11px] text-slate-500 mt-1">Automated git timestamp & repository uniqueness verification.</div>
+                </div>
+                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/70">
+                  <Lock size={18} className="text-slate-900 mb-2" />
+                  <div className="text-xs font-bold text-slate-900">Anti-Plagiarism Filter</div>
+                  <div className="text-[11px] text-slate-500 mt-1">Cross-hackathon duplicate detection & originality screening.</div>
+                </div>
+                <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200/70">
+                  <FileCheck2 size={18} className="text-slate-900 mb-2" />
+                  <div className="text-xs font-bold text-slate-900">Live Infra Check</div>
+                  <div className="text-[11px] text-slate-500 mt-1">Direct verification of production URLs, demo pitch & billing hooks.</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Portal Card */}
+            <div className="lg:col-span-5">
+              <div className="p-8 rounded-3xl bg-slate-950 text-white border border-slate-800 space-y-6 shadow-xl">
+                <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+                  <div>
+                    <div className="text-[10px] font-mono uppercase tracking-widest text-emerald-400 font-bold">
+                      Proprietary Verification Hub
+                    </div>
+                    <div className="text-xl font-black tracking-tight mt-0.5">
+                      Official Submission Portal
+                    </div>
+                  </div>
+                  <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-mono font-bold">
+                    LIVE
+                  </span>
+                </div>
+
+                <div className="space-y-3 text-xs text-slate-300">
+                  <div className="flex items-start gap-2.5">
+                    <CheckCircle2 size={15} className="text-emerald-400 flex-shrink-0 mt-0.5" />
+                    <span><strong>Deadline Unchanged:</strong> October 31, 2026 @ 5:00 PM IST.</span>
+                  </div>
+                  <div className="flex items-start gap-2.5">
+                    <CheckCircle2 size={15} className="text-emerald-400 flex-shrink-0 mt-0.5" />
+                    <span><strong>Judging Window:</strong> November 1 – November 9, 2026.</span>
+                  </div>
+                  <div className="flex items-start gap-2.5">
+                    <CheckCircle2 size={15} className="text-emerald-400 flex-shrink-0 mt-0.5" />
+                    <span><strong>Required Deliverables:</strong> Live cloud URL, public GitHub repo with authentic commits, 2–5 min keynote video, and executive/fiscal briefing.</span>
+                  </div>
+                </div>
+
+                <a
+                  href={submissionPortalUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-4 px-6 rounded-2xl bg-white hover:bg-slate-100 text-slate-950 font-extrabold text-sm tracking-tight transition-all flex items-center justify-center gap-2 shadow-lg group"
+                >
+                  <span>Submit Your Project Here</span>
+                  <ExternalLink size={16} className="group-hover:translate-x-0.5 transition-transform" />
+                </a>
+
+                <div className="text-[11px] font-mono text-center text-slate-400 truncate">
+                  Portal Endpoint: {submissionPortalUrl}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -793,7 +1028,7 @@ interface SeedFundCriteria {
             $14,644 Total Prize Pool
           </h2>
           <p className="text-slate-600 text-lg">
-            Pre-procured enterprise credit pools, cloud compute reserves, and commercial software licenses underwritten directly by Galuxium and Ecosystem Partners.
+            Pre-procured enterprise credit pools, cloud compute reserves, and commercial software licenses underwritten directly by Galuxium, Adaption Labs, Backboard.io, DevSwarm, and YouCam API.
           </p>
         </div>
 
@@ -992,7 +1227,7 @@ interface SeedFundCriteria {
         </div>
       </section>
 
-      {/* Grand Judging Panel */}
+      {/* Grand Judging Panel with Headshot Support */}
       <section id="judges" className="py-24 px-6 max-w-7xl mx-auto relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 text-xs font-mono font-medium text-slate-700 uppercase tracking-wider mb-4">
@@ -1013,11 +1248,19 @@ interface SeedFundCriteria {
               className="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:border-slate-400 hover:shadow-md transition-all flex flex-col justify-between"
             >
               <div>
-                <div className="flex items-center justify-between mb-4">
-                  <div className="w-12 h-12 rounded-2xl bg-slate-100 text-slate-700 font-bold text-base flex items-center justify-center border border-slate-200">
-                    {judge.name.split(' ').map(n => n[0]).join('')}
+                <div className="flex items-start justify-between mb-4">
+                  {/* Judge Headshot Container with Initials Fallback */}
+                  <div className="relative w-16 h-16 rounded-2xl bg-slate-100 text-slate-700 font-bold text-base flex items-center justify-center border border-slate-200 overflow-hidden shadow-sm">
+                    <span>{judge.name.split(' ').map(n => n[0]).join('')}</span>
+                    <Image
+                      src={judge.image}
+                      alt={judge.name}
+                      fill
+                      sizes="64px"
+                      className="object-cover"
+                    />
                   </div>
-                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-slate-100 text-slate-700">
+                  <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2.5 py-1 rounded bg-slate-100 text-slate-700">
                     {judge.badge}
                   </span>
                 </div>
@@ -1032,21 +1275,6 @@ interface SeedFundCriteria {
               </div>
             </div>
           ))}
-
-          {/* Join the Panel Card */}
-          <div className="p-6 rounded-3xl bg-slate-50 border-2 border-dashed border-slate-200 hover:border-slate-400 transition-colors flex flex-col items-center justify-center text-center">
-            <div className="w-12 h-12 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 mb-4 shadow-sm">
-              <Sparkles size={20} />
-            </div>
-            <h4 className="text-base font-bold text-slate-800">Become a Judge</h4>
-            <p className="text-xs text-slate-500 mt-1 mb-4">Are you a senior engineer or venture architect?</p>
-            <a 
-              href={arenaUrl}
-              className="text-xs font-semibold text-slate-900 hover:underline flex items-center gap-1"
-            >
-              Apply to Judge <ExternalLink size={12} />
-            </a>
-          </div>
         </div>
       </section>
 
@@ -1060,7 +1288,7 @@ interface SeedFundCriteria {
             Frequently Asked Questions
           </h2>
           <p className="text-slate-600 text-base">
-            Everything you need to know about eligibility, Backboard keys, and IP governance.
+            Everything you need to know about eligibility, partner infrastructure keys, and IP governance.
           </p>
         </div>
 
@@ -1106,15 +1334,17 @@ interface SeedFundCriteria {
               <span className="text-slate-400">Build a real SaaS company.</span>
             </h2>
             <p className="text-slate-300 text-lg leading-relaxed max-w-2xl mx-auto">
-              Join 865+ engineers, founders, and technical architects competing for $14,644 in enterprise credits, seed funding, and tier-one VC exposure.
+              Join 1,065+ engineers, founders, and technical architects competing for $14,644 in enterprise credits, seed funding, and tier-one VC exposure.
             </p>
             
             <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
               <a 
-                href={arenaUrl}
+                href={submissionPortalUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full sm:w-auto px-10 py-4 rounded-full bg-white text-slate-900 font-bold hover:bg-slate-100 transition-all shadow-lg flex items-center justify-center gap-2 group"
               >
-                <span>Register for the Arena</span>
+                <span>Submit Your Project</span>
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </a>
               <Link
@@ -1135,11 +1365,11 @@ interface SeedFundCriteria {
           <div className="space-y-3 md:col-span-1">
             <div className="flex items-center gap-2">
               <Image
-                  src="/brand/logo.png"
-                  alt="Galuxium Logo"
-                  width={50}
-                  height={50}
-                />
+                src="/brand/logo.png"
+                alt="Galuxium Logo"
+                width={50}
+                height={50}
+              />
               <span className="font-extrabold text-base tracking-tight text-slate-900">
                 GALUXIUM
               </span>
@@ -1153,8 +1383,8 @@ interface SeedFundCriteria {
             <h5 className="text-xs font-bold font-mono uppercase tracking-wider text-slate-900 mb-3">Arena</h5>
             <ul className="space-y-2 text-xs text-slate-500">
               <li><a href="#overview" className="hover:text-slate-900 transition-colors">Overview</a></li>
+              <li><a href="#partners" className="hover:text-slate-900 transition-colors">Ecosystem Partners</a></li>
               <li><a href="#architecture" className="hover:text-slate-900 transition-colors">Architecture Standard</a></li>
-              <li><a href="#requirements" className="hover:text-slate-900 transition-colors">Submission Benchmarks</a></li>
               <li><a href="#prizes" className="hover:text-slate-900 transition-colors">Prizes</a></li>
             </ul>
           </div>
@@ -1163,8 +1393,13 @@ interface SeedFundCriteria {
             <h5 className="text-xs font-bold font-mono uppercase tracking-wider text-slate-900 mb-3">Governance</h5>
             <ul className="space-y-2 text-xs text-slate-500">
               <li><Link href="/rules" className="hover:text-slate-900 transition-colors">Operational Rules</Link></li>
+              <li><a href="#integrity-portal" className="hover:text-slate-900 transition-colors">Integrity Mandate</a></li>
               <li><a href="#judges" className="hover:text-slate-900 transition-colors">Grand Judging Panel</a></li>
-              <li><a href={arenaUrl} className="hover:text-slate-900 transition-colors">Arena Portal</a></li>
+              <li>
+                <a href={submissionPortalUrl} target="_blank" rel="noopener noreferrer" className="hover:text-slate-900 transition-colors">
+                  Official Submission Portal
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -1173,19 +1408,19 @@ interface SeedFundCriteria {
             <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100 text-xs text-slate-600 space-y-2">
               <div className="flex items-center gap-2 text-slate-900 font-semibold">
                 <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                Sync Active
+                Portal Verification Active
               </div>
-              <p className="text-[11px] text-slate-400">Official coding partner: Backboard.io enterprise stack.</p>
+              <p className="text-[11px] text-slate-400">
+                Powered by Adaption Labs, Backboard.io, DevSwarm & YouCam API.
+              </p>
             </div>
           </div>
         </div>
 
         <div className="max-w-7xl mx-auto pt-8 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-400">
           <div>© 2026 Galuxium Inc. All rights reserved.</div>
-          <div className="flex gap-6 uppercase tracking-wider text-[11px]">
-            <span>Privacy</span>
-            <span>Terms</span>
-            <span>Security</span>
+          <div className="text-[11px] uppercase tracking-wider">
+            Nexus V2 Global Deployment Arena
           </div>
         </div>
       </footer>

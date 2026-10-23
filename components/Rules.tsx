@@ -17,7 +17,7 @@ export default function PremiumRulesPage() {
       title: "Team Formations & Cohesion",
       blueprint: "Builders are permitted to compete either as elite individual founders or in collaborative teams.",
       constraintLabel: "The Constraint",
-      constraint: "To preserve a balanced ecosystem, team sizes are strictly capped. All members must be registered on the official Devpost roster prior to the commencement of the build phase."
+      constraint: "To preserve a balanced ecosystem, team sizes are strictly capped. All members must be registered via the official Galuxium submission portal prior to the commencement of the evaluation phase."
     },
     {
       id: "03",
@@ -38,8 +38,8 @@ export default function PremiumRulesPage() {
     {
       id: "05",
       icon: <Scale className="w-5 h-5" />,
-      title: "Digital Conduct & Devpost Compliance",
-      blueprint: "The entire lifecycle of the event is governed by the official Devpost Terms of Service and community guidelines.",
+      title: "Digital Conduct & Platform Integrity",
+      blueprint: "The entire lifecycle of the event is governed by official Galuxium Nexus V2 operational guidelines.",
       constraintLabel: "The Constraint",
       constraint: "Galuxium enforces a zero-tolerance policy for misconduct. Any verified instances of plagiarism, code-faking, harassment, or malicious behavior targeted at fellow builders, mentors, or judges will trigger immediate, permanent disqualification and a ban from future iterations."
     }
@@ -109,7 +109,7 @@ export default function PremiumRulesPage() {
       {/* Minimal Footer */}
       <footer className="border-t border-slate-100 mt-24">
         <div className="max-w-4xl mx-auto px-6 py-12 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-medium text-slate-400">
-          <div>© 2026 Devpost, Inc. / Galuxium. All rights reserved.</div>
+          <div>© 2026 Galuxium Inc. All rights reserved.</div>
           <div className="flex gap-6 uppercase tracking-wider">
             <span className="hover:text-slate-900 cursor-pointer transition-colors">Privacy</span>
             <span className="hover:text-slate-900 cursor-pointer transition-colors">Terms</span>

@@ -270,7 +270,7 @@ interface SeedFundCriteria {
       title: "Verifiable Infrastructure (Code Repository)",
       tag: "Codebase Integrity",
       desc: "A public GitHub repository containing the complete production codebase with authentic commit histories, dependencies, architectural diagrams, and local replication instructions.",
-      details: ["Exemplary README.md with system design", "Zero committed secrets or exposed env variables", "Modular, typed component architecture"]
+      details: ["README.md with system design", "Zero committed secrets or exposed env variables", "Modular, typed component architecture"]
     },
     {
       id: 3,

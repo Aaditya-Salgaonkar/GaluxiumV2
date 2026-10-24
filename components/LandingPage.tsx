@@ -356,7 +356,7 @@ interface SeedFundCriteria {
       name: "Akshar Yadav",
       role: "Application Programmer V",
       org: "Bank of America",
-      expertise: "Distributed Systems & Institutional Sec",
+      expertise: "Distributed Systems",
       badge: "BofA",
       image: "/judges/akshar-yadav.png"
     },

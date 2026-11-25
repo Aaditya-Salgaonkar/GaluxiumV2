@@ -1,5 +1,6 @@
 "use client";
 
+import { BACKEND_URL } from "@/lib/config";
 import React, {
   useCallback,
   useEffect,
@@ -16,7 +17,7 @@ import {
 import IconSend from "./IconSend";
 
 const API_BASE =
-  process.env.NEXT_PUBLIC_API_BASE || process.env.NEXT_PUBLIC_BACKEND_URL || "";
+  BACKEND_URL;
 
 type UploadedImage = {
   id: string;

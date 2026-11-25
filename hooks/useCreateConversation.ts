@@ -1,5 +1,6 @@
 "use client";
 
+import { BACKEND_URL } from "@/lib/config";
 import { useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "@/lib/SessionContext";
@@ -39,7 +40,7 @@ export function useCreateConversation({
         };
 
         const r = await fetch(
-          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/chat/create`,
+          `${BACKEND_URL}/api/chat/create`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },

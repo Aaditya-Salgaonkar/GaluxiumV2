@@ -1,5 +1,6 @@
 "use client";
 
+import { BACKEND_URL } from "@/lib/config";
 import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
@@ -145,7 +146,7 @@ export default function AdvancedSettingsModal({
       
        try {
          const res = await fetch(
-           `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/user/details`,{
+           `${BACKEND_URL}/api/user/details`,{
              method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

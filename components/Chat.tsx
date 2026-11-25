@@ -1,5 +1,6 @@
 "use client";
 
+import { BACKEND_URL } from "@/lib/config";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { motion, AnimatePresence } from "framer-motion";
@@ -54,7 +55,7 @@ export default function Chat({
     let mounted = true;
     (async () => {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/chat/models`);
+        const res = await fetch(`${BACKEND_URL}/api/chat/models`);
         if (!res.ok) return;
         const json = await res.json();
         if (!mounted) return;
@@ -72,7 +73,7 @@ export default function Chat({
   // save message helper (fire-and-forget)
   const saveMessageToBackend = useCallback(async (m: Message) => {
     try {
-      await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/chat/save`, {
+      await fetch(`${BACKEND_URL}/api/chat/save`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -161,7 +162,7 @@ export default function Chat({
           .filter((m) => m.role !== "system" && m.conversation_id === cid)
           .map((m) => ({ role: m.role, content: m.content }));
 
-        const resp = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/chat/search`, {
+        const resp = await fetch(`${BACKEND_URL}/api/chat/search`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -211,7 +212,7 @@ export default function Chat({
     try {
       const cid = activeConversationId;
       if (!cid) return;
-      const r = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/chat/${encodeURIComponent(cid)}`);
+      const r = await fetch(`${BACKEND_URL}/api/chat/${encodeURIComponent(cid)}`);
       if (!r.ok) return;
       const j = await r.json();
       const arr: Message[] = Array.isArray(j.data) ? j.data : [];

@@ -1,5 +1,6 @@
 "use client";
 
+import { BACKEND_URL } from "@/lib/config";
 import { useSession } from "@/lib/SessionContext";
 import { supabase } from "@/lib/supabase";
 import { Conversation  } from "@/lib/types";
@@ -57,7 +58,7 @@ export default function SidebarClient({
 
     try {
       const r = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/chat/list?userId=${userId}`,
+        `${BACKEND_URL}/api/chat/list?userId=${userId}`,
         { cache: "no-store" }
       );
 
@@ -135,7 +136,7 @@ const openConversation = (id: string) => {
   const handleDelete = async (id: string) => {
     try {
       const resp = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/chat/delete`,
+        `${BACKEND_URL}/api/chat/delete`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

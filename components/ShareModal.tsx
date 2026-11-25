@@ -1,5 +1,6 @@
 "use client";
 
+import { getFrontendUrl } from "@/lib/config";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { X, Copy } from "lucide-react";
@@ -14,7 +15,7 @@ export default function ShareModal({
   conversationId: string;
 }) {
 
-  const shareUrl = `${process.env.NEXT_PUBLIC_FRONTEND_URL}/chat/${conversationId}`;
+  const shareUrl = `${getFrontendUrl()}/chat/${conversationId}`;
 
   const [copied, setCopied] = useState(false);
 
